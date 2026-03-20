@@ -1,4 +1,4 @@
-package ejercicios;
+package ejerciciosSimples;
 
 import java.lang.reflect.Array;
 import java.util.Iterator;
