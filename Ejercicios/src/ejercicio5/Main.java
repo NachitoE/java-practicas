@@ -3,6 +3,7 @@ package ejercicio5;
 import ejercicio5.Empleado;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 import ejercicio5.Administrativo;
 import ejercicio5.Vendedor;
@@ -25,47 +26,28 @@ public class Main {
 			System.out.println("Ingrese los datos:");
 			switch (opc) {
 			case "A": {
-				System.out.println("HORAS EXTRA:");
-				int hsExtra = Integer.parseInt(scanner.nextLine());
-				System.out.println("HORAS POR MES:");
-				int hsMes = Integer.parseInt(scanner.nextLine());
-				
-				newEmpleado = new Administrativo(hsExtra, hsMes);
+				empleados[cantCargado] = Initializer.GenerateAdministrativo();
 				break;
 			}
 			case "V": {
-				System.out.println("PORCENTAJE COMISIÓN:");
-				double porcentajeComision = Double.parseDouble(scanner.nextLine());
-				System.out.println("HORAS POR MES:");
-				int totalVentas = Integer.parseInt(scanner.nextLine());
-				newEmpleado = new Vendedor(porcentajeComision, totalVentas);
+				empleados[cantCargado] = Initializer.GenerateVendedor();
 				break;
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected value: " + opc);
 			}
 			
-			System.out.println("NOMBRE:");
-			String nombre = scanner.nextLine();
-			System.out.println("DNI:");
-			String dni = scanner.nextLine();
-			System.out.println("APELLIDO:");
-			String apellido = scanner.nextLine();
-			System.out.println("EMAIL:");
-			String email = scanner.nextLine();
-			System.out.println("SUELDO BASE:");
-			double sueldoBase = Double.parseDouble(scanner.nextLine());
-			
-			newEmpleado.Nombre = nombre;
-			newEmpleado.Dni = dni;
-			newEmpleado.Apellido = apellido;
-			newEmpleado.Email = email;
-			newEmpleado.SueldoBase = sueldoBase;
 			cantCargado++;
 		}
 		
-		scanner.close();
 		
+		System.out.println("----- LISTADO -----");
+		System.out.println("N° EMPLEADO | DNI | NOMBRE | APELLIDO | SUELDO");
+		for (int i = 0; i < MAX_INGRESO; i++) {
+			Empleado emp = empleados[i];
+			System.out.println(i + " - " + emp.Dni + " - " + emp.Nombre + " - " + emp.Apellido + " - " + emp.getSueldo());
+			
+		}
 	}
 
 }

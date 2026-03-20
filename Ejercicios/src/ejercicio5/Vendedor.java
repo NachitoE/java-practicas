@@ -9,6 +9,16 @@ public class Vendedor extends Empleado {
 		TotalVentas = totalVentas;
 	}
 	
+	public Vendedor(String dni, String nombre, String apellido, String email, double sueldoBase, double porcentajeComision, int totalVentas) {
+		Dni = dni;
+		Nombre = nombre;
+		Apellido = apellido;
+		Email = email;
+		SueldoBase = sueldoBase;
+		PorcentajeComision = porcentajeComision;
+		TotalVentas = totalVentas;
+	}
+	
 	public double getSueldo() {
 		return SueldoBase + (PorcentajeComision*TotalVentas/100);	
 	}
