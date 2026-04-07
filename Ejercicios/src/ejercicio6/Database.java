@@ -91,7 +91,13 @@ public class Database {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(CONNECTION_STRING);
-			
+			PreparedStatement pst = conn.prepareStatement("INSERT INTO Product (name, description, price, stock, shippingIncluded) VALUES(?,?,?,?,?)");
+			pst.setString(1, p.getName());
+			pst.setString(2, p.getDescription());
+			pst.setDouble(3, p.getPrice());
+			pst.setInt(4, p.getStock());
+			pst.setBoolean(5, p.isShippingIncluded());
+
 		}
 		catch(SQLException e) {
 			
